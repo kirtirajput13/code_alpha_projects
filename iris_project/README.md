@@ -17,31 +17,54 @@ To predict the species of an iris flower — *Setosa*, *Versicolor*, or *Virgini
 - **Seaborn & Matplotlib** (for data visualization)
 
 ## 📁 Dataset
-- Source: [Iris Dataset on Kaggle](https://www.kaggle.com/datasets/saurabh00007/iriscsv)
-- Size: 150 samples, 3 classes (50 samples each)
 
-## 🔍 Workflow Overview
-1. **Data Loading** – Load dataset using pandas
-2. **Data Cleaning** – Drop unnecessary columns and check for missing values
-3. **Label Encoding** – Convert species names into numeric labels
-4. **Train/Test Split** – Split data into 80% training and 20% testing
-5. **Model Training** – Use Logistic Regression to train the model
-6. **Evaluation** – Evaluate the model using accuracy and classification report
-7. **Visualization** – Use pairplot to visualize feature distribution
+The dataset used is [`Iris.csv`](https://archive.ics.uci.edu/ml/datasets/iris), containing 150 flower samples with 4 features:
 
-## 📊 Results
-- Achieved an accuracy of over **95%** on test data.
-- Model successfully distinguishes between the 3 species using basic flower measurements.
+- `SepalLengthCm`
+- `SepalWidthCm`
+- `PetalLengthCm`
+- `PetalWidthCm`
+- `Species` (target class: Setosa, Versicolor, Virginica)
 
-## 📸 Sample Visualization
+---
 
-![Pairplot](https://upload.wikimedia.org/wikipedia/commons/5/56/Iris_dataset_scatterplot.svg)  
-*Pairplot of the iris dataset (source: Wikipedia)*
+## ✅ Project Workflow
 
-## 🧠 What I Learned
-- Basics of classification algorithms
-- Data preprocessing techniques
-- Using Scikit-learn for end-to-end ML tasks
-- Importance of train-test splitting and evaluation
+### 1. **Data Preprocessing**
+- Dropped `Id` column
+- Encoded categorical target (`Species`) using `LabelEncoder`
+- Standardized features using `StandardScaler`
 
-## 📂 Project Structure
+### 2. **Model Training**
+- Trained 3 classifiers:
+  - Logistic Regression
+  - Support Vector Machine (SVM)
+  - Random Forest Classifier
+- Performed `train_test_split` with stratification
+
+### 3. **Evaluation**
+- Used:
+  - Accuracy Score
+  - Classification Report
+  - Confusion Matrix (with visualizations)
+  - 5-Fold Cross-Validation
+
+### 4. **Feature Importance**
+- Extracted from the trained Random Forest model and visualized with a barplot
+
+### 5. **Visualization**
+- Generated a `pairplot` colored by species for data insight
+
+### 6. **Model Saving**
+- Saved the final Random Forest model and the scaler using `joblib`:
+  - `iris_rf_model.pkl`
+  - `iris_scaler.pkl`
+
+---
+
+## 🔧 How to Run
+
+### 1. Clone the repo
+```bash
+git clone https://github.com/yourusername/iris-flower-classification.git
+cd iris-flower-classification
